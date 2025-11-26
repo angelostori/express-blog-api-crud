@@ -1,3 +1,4 @@
+const posts = require('../assets/posts.js')
 /*
 Milestone 1
 
