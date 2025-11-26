@@ -1,7 +1,3 @@
-/*
-Bonus
-Provare a restituire un singolo post dalla rotta show, sempre in formato json
-*/
 const express = require('express')
 const app = express()
 const PORT = 3000
@@ -16,5 +12,7 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.send('Welcome to my blog API server')
 })
+
+app.use(express.static('public'));
 
 app.use('/api/posts', postsRouter)
