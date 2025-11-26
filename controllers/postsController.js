@@ -1,4 +1,4 @@
-const posts = require('../assets/posts.js')
+const posts = require('../data/posts.js')
 /*
 Milestone 1
 
@@ -18,7 +18,10 @@ const show = (req, res) => {
     // res.send(`Show the post with id: ${req.params.id}`)
 
     if (!thisPost) {
-        res.send(`The post with id: ${req.params.id} doesn't exist`)
+        return res.status(404).json({
+            error: true,
+            message: 'Post not found!'
+        })
     }
 
     res.json(thisPost)
