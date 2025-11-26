@@ -1,15 +1,16 @@
 const posts = require('../data/posts.js')
-/*
-Milestone 1
-
-Come prima cosa, creiamo un controller per i nostri post, in una cartella controllers. 
-
-All’interno, prepariamo tutte le funzioni necessarie e copiamo in ciascuna la logica delle funzioni che attualmente 
-si trovano nel router (al momento restituiscono solo dei messaggi). 
-*/
 
 const index = (req, res) => {
-    res.json(posts)
+    // Inizialmente, il menu filtrato corrisponde a quello originale
+    let filteredPosts = posts
+    // Se la richiesta contiene un filtro, allora filtriamo la lista dei post
+    if (req.query.ingredient) {
+        filteredPosts = menubar.filter(post => post.tag.includes(req.query.tag))
+    }
+    // restituiamo la variabile filteredPost
+    // potrebbe essere stata filtrata o contenere la lista originale
+    res.json(filteredPosts)
+    // URL test: http://localhost:3000/api/posts?tag=dolci
 }
 
 const show = (req, res) => {
