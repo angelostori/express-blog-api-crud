@@ -39,9 +39,12 @@ const store = (req, res) => {
 
     posts.push(newPost)
 
-    console.log(req.body);
+    console.log("Post aggiunto:", req.body);
 
-    res.status(201).json(newPost);
+    res.status(201).json({
+        message: "Post creato con successo!",
+        post: newPost
+    });
 }
 
 const update = (req, res) => {
