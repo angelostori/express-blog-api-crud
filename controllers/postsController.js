@@ -31,18 +31,15 @@ const show = (req, res) => {
 const store = (req, res) => {
     const newPost = {
         id: Date.now(),
-        "title": "Crostata alla Marmellata",
-        "content": "Un classico intramontabile delle cucine di casa, la crostaa alla marmellata è quel dolce che profuma di domeniche lente e colazioni genuine. Un impasto semplice di farina, burro e zucchero che, lavorato con calma e un po’ di pazienza, diventa una base friabile capace di esaltare qualsiasi marmellata: albicocca, ciliegia o quella fatta in casa dalla nonna. Bastano pochi gesti – stendere la frolla, aggiungere la marmellata e intrecciare le strisce – per ritrovare quell’atmosfera familiare che ci accompagna fin da piccoli. Una fetta di crostata è perfetta per iniziare la giornata con dolcezza o per una merenda che sa di tradizione e semplicità.",
-        "image": "#",
-        "tags": [
-            "Dolci",
-            "Crostata",
-            "Ricette vegetariane",
-            "Ricette tradizionali"
-        ]
+        "title": req.body.title,
+        "content": req.body.content,
+        "image": req.body.image,
+        "tags": req.body.tags
     }
 
     posts.push(newPost)
+
+    console.log(req.body);
 
     res.status(201).json(newPost);
 }
