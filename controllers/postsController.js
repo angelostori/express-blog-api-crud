@@ -48,7 +48,25 @@ const store = (req, res) => {
 }
 
 const update = (req, res) => {
-    res.send(`Update the post with id: ${req.params.id}`)
+    const id = Number(req.params.id)
+    const postData = req.body
+
+    const thisPost = posts.find(post => post.id === id)
+
+    if (!thisPost) {
+        return res.status(404).json({
+            error: true,
+            message: 'Post not found!'
+        })
+    }
+
+    // aggiornamento post trovato
+    thisPost.title = postData.title
+    thisPost.content = postData.content
+    thisPost.image = postData.image
+    thisPost.tags = postData.tags
+
+    res.json(thisPost)
 }
 
 const modify = (req, res) => {
