@@ -4,8 +4,10 @@ const index = (req, res) => {
     // Inizialmente, il menu filtrato corrisponde a quello originale
     let filteredPosts = posts
     // Se la richiesta contiene un filtro, allora filtriamo la lista dei post
-    if (req.query.ingredient) {
-        filteredPosts = menubar.filter(post => post.tag.includes(req.query.tag))
+    if (req.query.tag) {
+        filteredPosts = posts.filter(post =>
+            post.tags && post.tags.includes(req.query.tag)
+        )
     }
     // restituiamo la variabile filteredPost
     // potrebbe essere stata filtrata o contenere la lista originale
